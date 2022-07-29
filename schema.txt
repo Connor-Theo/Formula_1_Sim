@@ -1,0 +1,100 @@
+f1_data
+-
+full_name Varchar
+driverId Integer pk
+race_name Varchar
+raceId integer FK >- race.raceId
+date date
+grid_position integer
+finish_position integer
+avg_humidity float
+avg_air_pressure float
+rainfall bool
+avg_airtemp float
+safety_car_laps integer
+redflag integer
+total_lap_time time
+downforce_level text
+longest_flat_out integer
+first_stop integer
+start_tyre varchar
+end_tyre varchar
+num_stops integer
+
+drivers
+-
+driverId integer PK FK >- f1_data.driverId
+driverRef varchar
+code char(3)
+forename varchar
+surname varchar
+FullName Varchar
+
+lap_time
+-
+raceId integer FK >- f1_data.raceId
+driverId integer Pk FK >- f1_data.driverId
+lap integer
+position integer
+time timestamp
+milliseconds integer
+
+circuits
+-
+circuitId integer pk
+circuitRef Varchar
+name Varchar
+location Varchar
+country Varchar
+lat integer
+lng integer 
+alt integer
+
+pit_stops
+-
+raceId integer pk FK >- lap_time.raceId
+driverId integer FK >- f1_data.driverId
+stop integer(1)
+lap integer
+time interval
+duration interval
+millisecond integer
+
+race
+-
+raceId integer pk FK >- lap_time.raceId
+year integer
+round integer
+circuitId integer FK >- circuits.circuitId
+race_name varchar
+date date
+time interval
+fp1_date date
+fp1_time interval
+fp2_date date
+fp2_time interval
+fp3_date date
+fp3_time interval
+quali_date date
+quali_time interval
+sprint_date date
+sprint_time interval
+
+results
+-
+resultId int pk
+raceId integer FK >- f1_data.driverId
+driverId integer FK >- lap_time.driverId
+constructorId integer
+number integer
+grid integer
+finish_Position integer
+positionText text
+positionOrder integer
+points integer
+laps integer
+time interval
+milliseconds integer
+fastestLapTime interval
+fastestLapSpeed integer
+statusID integer
