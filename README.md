@@ -31,3 +31,5 @@
 ## Resources:
 
 **Datasets:** [Name of File](paste path to files github location)
+
+**Google Slides:** https://docs.google.com/presentation/d/1rkPj8QgNRgswLI2H3Jwc6Nhys84x5MNJ/edit#slide=id.p1
