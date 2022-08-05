@@ -2,39 +2,39 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-CREATE TABLE "f1_data" (
+CREATE TABLE "modeling_data" (
     "full_name" Varchar   NOT NULL,
     "driverId" Integer   NOT NULL,
     "race_name" Varchar   NOT NULL,
     "raceId" integer   NOT NULL,
     "date" date   NOT NULL,
     "grid_position" integer   NOT NULL,
-    "finish_position" integer   NOT NULL,
+    "finish_position" integer,
     "avg_humidity" float   NOT NULL,
     "avg_air_pressure" float   NOT NULL,
-    "rainfall" bool   NOT NULL,
+    "rainfall" boolean   NOT NULL,
     "avg_airtemp" float   NOT NULL,
-    "safety_car_laps" integer   NOT NULL,
+    "safety_car_laps" integer  NOT NULL,
     "redflag" integer   NOT NULL,
-    "total_lap_time" time   NOT NULL,
-    "downforce_level" text   NOT NULL,
-    "longest_flat_out" integer   NOT NULL,
-    "first_stop" integer   NOT NULL,
-    "start_tyre" varchar   NOT NULL,
-    "end_tyre" varchar   NOT NULL,
-    "num_stops" integer   NOT NULL,
+    "total_lap_time" float,
+    "downforce_level" varchar(12),
+    "longest_flat_out" integer,
+    "first_stop" integer,
+    "start_tyre" varchar(13),
+    "end_tyre" varchar(13),
+    "num_stops" integer,
     CONSTRAINT "pk_f1_data" PRIMARY KEY (
-        "driverId"
+        "driverId", "raceId"
      )
 );
 
 CREATE TABLE "drivers" (
     "driverId" integer   NOT NULL,
-    "driverRef" varchar   NOT NULL,
+    "driverRef" varchar(18)   NOT NULL,
     "code" char(3)   NOT NULL,
-    "forename" varchar   NOT NULL,
-    "surname" varchar   NOT NULL,
-    "FullName" Varchar   NOT NULL,
+    "forename" varchar(10)   NOT NULL,
+    "surname" varchar(10)   NOT NULL,
+    "FullName" Varchar(18)   NOT NULL,
     CONSTRAINT "pk_drivers" PRIMARY KEY (
         "driverId"
      )
@@ -45,22 +45,22 @@ CREATE TABLE "lap_time" (
     "driverId" integer   NOT NULL,
     "lap" integer   NOT NULL,
     "position" integer   NOT NULL,
-    "time" timestamp   NOT NULL,
+    "time" time     NOT NULL,
     "milliseconds" integer   NOT NULL,
     CONSTRAINT "pk_lap_time" PRIMARY KEY (
-        "driverId"
+        "raceId", "driverId", "lap"
      )
 );
 
 CREATE TABLE "circuits" (
     "circuitId" integer   NOT NULL,
-    "circuitRef" Varchar   NOT NULL,
-    "name" Varchar   NOT NULL,
-    "location" Varchar   NOT NULL,
+    "circuitRef" Varchar(20)   NOT NULL,
+    "name" Varchar(40)   NOT NULL,
+    "location" Varchar(22)   NOT NULL,
     "country" Varchar   NOT NULL,
-    "lat" integer   NOT NULL,
-    "lng" integer   NOT NULL,
-    "alt" integer   NOT NULL,
+    "lat" float   NOT NULL,
+    "lng" float   NOT NULL,
+    "alt" integer,
     CONSTRAINT "pk_circuits" PRIMARY KEY (
         "circuitId"
      )
@@ -69,13 +69,13 @@ CREATE TABLE "circuits" (
 CREATE TABLE "pit_stops" (
     "raceId" integer   NOT NULL,
     "driverId" integer   NOT NULL,
-    "stop" integer(1)   NOT NULL,
+    "stop" integer   NOT NULL,
     "lap" integer   NOT NULL,
-    "time" interval   NOT NULL,
-    "duration" interval   NOT NULL,
-    "millisecond" integer   NOT NULL,
+    "time" time   NOT NULL,
+    "duration" float   NOT NULL,
+    "milliseconds" integer   NOT NULL,
     CONSTRAINT "pk_pit_stops" PRIMARY KEY (
-        "raceId"
+        "raceId", "driverId", "lap"
      )
 );
 
@@ -84,40 +84,42 @@ CREATE TABLE "race" (
     "year" integer   NOT NULL,
     "round" integer   NOT NULL,
     "circuitId" integer   NOT NULL,
-    "race_name" varchar   NOT NULL,
+    "race_name" varchar(30)   NOT NULL,
     "date" date   NOT NULL,
-    "time" interval   NOT NULL,
-    "fp1_date" date   NOT NULL,
-    "fp1_time" interval   NOT NULL,
-    "fp2_date" date   NOT NULL,
-    "fp2_time" interval   NOT NULL,
-    "fp3_date" date   NOT NULL,
-    "fp3_time" interval   NOT NULL,
-    "quali_date" date   NOT NULL,
-    "quali_time" interval   NOT NULL,
-    "sprint_date" date   NOT NULL,
-    "sprint_time" interval   NOT NULL,
+    "time" time,
+    "fp1_date" date,
+    "fp1_time" time,
+    "fp2_date" date,
+    "fp2_time" time,
+    "fp3_date" date,
+    "fp3_time" time,
+    "quali_date" date,
+    "quali_time" time,
+    "sprint_date" date,
+    "sprint_time" time,
     CONSTRAINT "pk_race" PRIMARY KEY (
         "raceId"
      )
 );
 
 CREATE TABLE "results" (
-    "resultId" int   NOT NULL,
+    "resultId" integer   NOT NULL,
     "raceId" integer   NOT NULL,
     "driverId" integer   NOT NULL,
     "constructorId" integer   NOT NULL,
-    "number" integer   NOT NULL,
+    "number" integer,
     "grid" integer   NOT NULL,
-    "finish_Position" integer   NOT NULL,
+    "Finish_Position" integer,
     "positionText" text   NOT NULL,
     "positionOrder" integer   NOT NULL,
-    "points" integer   NOT NULL,
+    "points" float   NOT NULL,
     "laps" integer   NOT NULL,
-    "time" interval   NOT NULL,
-    "milliseconds" integer   NOT NULL,
-    "fastestLapTime" interval   NOT NULL,
-    "fastestLapSpeed" integer   NOT NULL,
+    "time" time,
+    "milliseconds" integer,
+	"fatestLap" integer,
+	"rank" integer,
+    "fastestLapTime" time,
+    "fastestLapSpeed" float,
     "statusID" integer   NOT NULL,
     CONSTRAINT "pk_results" PRIMARY KEY (
         "resultId"
