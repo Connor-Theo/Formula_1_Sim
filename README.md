@@ -13,19 +13,21 @@
 ## Description of data source:
 
 - Through this project we are planning on working with a few different datasets. The majority of our data was pulled from Kaggle
+- This dataset provides a variety of historical race data for the Formula 1 series from 1950-2022
 - Link to data on Kaggle: 
   - https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?resource=download
 ---
 
 ## Description of communication protocals:
 
-- We plan to communicate during our regularly assigned classtime along with keeping conversations going within the slack app.
+- We plan to communicate during our regularly assigned classtime along with keeping conversations going within the slack app
   - We have created our own group within slack and this will be our primary means of communication
 ---
 
 ## Questions we hope to answer with the data:
 
-- We hope to use the above dataset and other supplemental data to get a better understanding what factors have the greatest impact on race finishes.
+- We hope to use the above dataset and other supplemental data to get a better understanding what factors have the greatest impact on race finishes
+- What features can we add or remove to improve the accuracy of the machine learning model?
 ---
 
 ## Resources:
