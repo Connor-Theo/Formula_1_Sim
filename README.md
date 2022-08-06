@@ -20,8 +20,8 @@
 
 ## Description of communication protocals:
 
-- We plan to communicate during our regularly assigned classtime along with keeping conversations going within the slack app
-  - We have created our own group within slack and this will be our primary means of communication
+- We plan to communicate during our regularly assigned classtime along with keeping conversations going within the Slack app
+  - We have created our own group within Slack and this will be our primary means of communication
 ---
 
 ## Questions we hope to answer with the data:
