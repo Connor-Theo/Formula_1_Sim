@@ -1,7 +1,7 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
-
+drop table modeling_data
 CREATE TABLE "modeling_data" (
     "full_name" Varchar   NOT NULL,
     "driverId" Integer   NOT NULL,
@@ -28,6 +28,12 @@ CREATE TABLE "modeling_data" (
      )
 );
 
+COPY modeling_data
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
+
 CREATE TABLE "drivers" (
     "driverId" integer   NOT NULL,
     "driverRef" varchar(18)   NOT NULL,
@@ -40,6 +46,12 @@ CREATE TABLE "drivers" (
      )
 );
 
+COPY drivers
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
+
 CREATE TABLE "lap_time" (
     "raceId" integer   NOT NULL,
     "driverId" integer   NOT NULL,
@@ -51,6 +63,12 @@ CREATE TABLE "lap_time" (
         "raceId", "driverId", "lap"
      )
 );
+
+COPY lap_time
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
 
 CREATE TABLE "circuits" (
     "circuitId" integer   NOT NULL,
@@ -66,6 +84,12 @@ CREATE TABLE "circuits" (
      )
 );
 
+COPY circuits
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
+
 CREATE TABLE "pit_stops" (
     "raceId" integer   NOT NULL,
     "driverId" integer   NOT NULL,
@@ -78,6 +102,12 @@ CREATE TABLE "pit_stops" (
         "raceId", "driverId", "lap"
      )
 );
+
+COPY pit_stops
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
 
 CREATE TABLE "race" (
     "raceId" integer   NOT NULL,
@@ -102,6 +132,12 @@ CREATE TABLE "race" (
      )
 );
 
+COPY race
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
+
 CREATE TABLE "results" (
     "resultId" integer   NOT NULL,
     "raceId" integer   NOT NULL,
@@ -125,6 +161,12 @@ CREATE TABLE "results" (
         "resultId"
      )
 );
+
+COPY results
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
 
 ALTER TABLE "f1_data" ADD CONSTRAINT "fk_f1_data_raceId" FOREIGN KEY("raceId")
 REFERENCES "race" ("raceId");
