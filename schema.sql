@@ -162,11 +162,40 @@ CREATE TABLE "results" (
      )
 );
 
+
 COPY results
 FROM 'your directory here'
 DELIMITER ','
 NULL AS '\N'
 CSV HEADER;
+
+Select md.race_name,
+		--md.driverId,
+		md.date,
+		md.full_name,
+		--md.raceId,
+		md.finish_position,
+		md.grid_position,
+		md.avg_humidity,
+		md.avg_air_pressure,
+		md.rainfall,
+		md.avg_airtemp,
+		md.downforce_level,
+		md.start_tyre,
+		md.end_tyre,
+		md.num_stops,		
+		--q.driverId,
+		--q.raceId,		
+		q.q1,
+		q.q2,
+		q.q3
+Into sim_data
+From modeling_data as md
+	inner join qualifying as q
+		on (md."raceId" = q."raceId")
+			and
+		   (md."driverId" = q."driverId")
+Order by md.date, md.finish_position;
 
 ALTER TABLE "f1_data" ADD CONSTRAINT "fk_f1_data_raceId" FOREIGN KEY("raceId")
 REFERENCES "race" ("raceId");
