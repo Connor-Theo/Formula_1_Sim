@@ -29,7 +29,7 @@ CREATE TABLE "modeling_data" (
 );
 
 COPY modeling_data
-FROM 'your directory here'
+FROM 'D:\Prof_Dev\Git\Formula_1_Sim\Resources\modeling_data.csv'
 DELIMITER ','
 NULL AS '\N'
 CSV HEADER;
@@ -164,6 +164,28 @@ CREATE TABLE "results" (
 
 
 COPY results
+FROM 'your directory here'
+DELIMITER ','
+NULL AS '\N'
+CSV HEADER;
+
+
+CREATE TABLE "qualifying" (
+    "qualifyId" integer   NOT NULL,
+    "raceId" integer   NOT NULL,
+	"driverId" integer   NOT NULL,
+    "constructorId" integer   NOT NULL,
+    "number" integer   NOT NULL,
+    "position" integer   NOT NULL,
+    "q1" time,
+    "q2" time,
+	"q3" time,
+    CONSTRAINT "pk_qualifying" PRIMARY KEY (
+        "qualifyId", "driverId"
+     )
+);
+
+COPY qualifying
 FROM 'your directory here'
 DELIMITER ','
 NULL AS '\N'
