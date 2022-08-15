@@ -61,7 +61,9 @@ To train the model, the data was split into two separate categories of "training
 ## Dashboard:
 
 - The dashboard will be created within Tableau and will contain interactive elements base upon our machine learning model.
+- Below is a screenshot of our storyboard for our Dashbaord. Many of the charts within our dashbaord will be interactive with multiple filters that will help to refine the data along with tell a story
 
+![Image of Dashboard Storyboard](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1%20Dashboard%20Storyboard.JPG)
 ---
 
 ## Resources:
