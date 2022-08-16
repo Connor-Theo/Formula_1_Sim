@@ -71,5 +71,3 @@ To train the model, the data was split into two separate categories of "training
 **Datasets:** [Resources](https://github.com/Connor-Theo/Formula_1_Sim/tree/matt_branch/Resources)
 
 **Google Slides:** https://docs.google.com/presentation/d/1T1S13TpNtwNmuS0r2bkTNl7emLizUT_eB4iXwrM04CQ/edit#slide=id.p1
-
-
