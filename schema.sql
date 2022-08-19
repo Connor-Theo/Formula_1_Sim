@@ -177,9 +177,9 @@ CREATE TABLE "qualifying" (
     "constructorId" integer   NOT NULL,
     "number" integer   NOT NULL,
     "position" integer   NOT NULL,
-    "q1" time,
-    "q2" time,
-	"q3" time,
+    "q1" interval,
+    "q2" interval,
+	"q3" interval,
     CONSTRAINT "pk_qualifying" PRIMARY KEY (
         "qualifyId", "driverId"
      )
