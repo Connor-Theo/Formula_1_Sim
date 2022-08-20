@@ -58,6 +58,12 @@ Features were chosen during the exploratory analysis phase of this project. We r
 
 To train the model, the data was split into two separate categories of "training" and "testing." In this way, a subset of the data is used to train the model and a subset is used to test the model. The second subset is sequestered and not used until predictions are run. The goal here is to determine how successful a given model is at predicting an outcome by running the test data through and comparing it to the actual results. At this time our model is ~49% accurate, slightly worse than a coin flip. Additional analysis can be done to determine if the model can be improved.
 
+**Updates to Model**
+
+After examining the model results and reviewing the features used, it was determined to remove "finish position" from the features. This was because "finish position" was highly correlated with our independent variable of "top ten." Removing this helped reduce the noise in the model. Additionally, the feature "qt_mn_ns" was a very large number and was skewing the end results due to its size. We decided to incoporate StandardScaler to equalize the features in the model. This substantially increased the effecacy of our model. 
+
+Finally, we optimized our model using Gradiant Boosting to 1) determine the best test group size and 2) determine if the model would better fit the data than the Logistic Regression model. After running the loop to determine best test model, we decided to move forward with the Gradiant Boosting model which ultimately landed at an accuracy of ~74%. 
+
 ---
 
 ## Dashboard:
