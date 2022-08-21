@@ -69,9 +69,11 @@ Finally, we optimized our model using Gradiant Boosting to 1) determine the best
 ## Dashboard:
 
 - The dashboard will be created within Tableau and will contain interactive elements base upon our machine learning model.
-- Below is a screenshot of our storyboard for our Dashbaord. Many of the charts within our dashbaord will be interactive with multiple filters that will help to refine the data along with tell a story
+- Below is a screenshot of our F1 Dashboard within Tableau. We have interactive filters within the chart along with a visulization of our Feature Importance chart from our machine learning model. 
 
-![Image of Dashboard Storyboard](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1%20Dashboard%20Storyboard.JPG)
+![Image of Dashboard Tab 1](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1_Dashboard_Races.png)
+
+![Image of Dashboard Tab 2](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1_Dashboard_Drivers.png)
 ---
 
 ## Resources:
@@ -80,4 +82,4 @@ Finally, we optimized our model using Gradiant Boosting to 1) determine the best
 
 **Google Slides:** https://docs.google.com/presentation/d/1T1S13TpNtwNmuS0r2bkTNl7emLizUT_eB4iXwrM04CQ/edit#slide=id.p1
 
-**Dashboard Races Tab:** https://prod-useast-a.online.tableau.com/t/formula1sim/views/Formula1Dashboard/RacesDashboard?:origin=card_share_link&:embed=n
+**Tableau Dashboard:** https://prod-useast-a.online.tableau.com/t/formula1sim/views/Formula1Dashboard/RacesDashboard?:origin=card_share_link&:embed=n
