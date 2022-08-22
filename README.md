@@ -41,6 +41,7 @@ The data was imported through connecting to pgAdmin to access our postgres datab
 During the preprocessing phase, the data types and the number of null values were determined. Unnecessary columns were dropped from the data set. Any racer that did not finish the race (represented as null in the data) was replaced with the finish position 20, which represents last place. There are three opportunities for racers to obtain the fastest qualifying time. Because only 1 qualifying time is used in the race, we took the fastest possible qualifying time and inserted the value into a new column. Because the previous qualifying times were now unnecessary, they were dropped from the data. Due to the high level of null values, we elected to remove the variable "downforce level" from our data, as it would skew the end results of our analysis.
 
 At this point, we rechecked null values and dropped 35 more rows, thus eliminated all nulls in our data. In order for the model to evaluate our data, we needed to convert the qualifying minimums to nanoseconds, otherwise the model would throw an error. After that we converted our categorical variables (Rainfall, Start Tyre, End Tyre) to integers to be able to pass them through the model. We reconfirmed that there were no nulls, the total population, and data types prior through initiating the model.
+
 ---
 
 ### The Supervised Machine Learning Model
@@ -56,14 +57,23 @@ Features were chosen during the exploratory analysis phase of this project. We r
 **Train/Test**
 
 To train the model, the data was split into two separate categories of "training" and "testing." In this way, a subset of the data is used to train the model and a subset is used to test the model. The second subset is sequestered and not used until predictions are run. The goal here is to determine how successful a given model is at predicting an outcome by running the test data through and comparing it to the actual results. At this time our model is ~49% accurate, slightly worse than a coin flip. Additional analysis can be done to determine if the model can be improved.
+
+**Updates to Model**
+
+After examining the model results and reviewing the features used, it was determined to remove "finish position" from the features. This was because "finish position" was highly correlated with our independent variable of "top ten." Removing this helped reduce the noise in the model. Additionally, the feature "qt_mn_ns" was a very large number and was skewing the end results due to its size. We decided to incoporate StandardScaler to equalize the features in the model. This substantially increased the effecacy of our model. 
+
+Finally, we optimized our model using Gradiant Boosting to 1) determine the best test group size and 2) determine if the model would better fit the data than the Logistic Regression model. After running the loop to determine best test model, we decided to move forward with the Gradiant Boosting model which ultimately landed at an accuracy of ~74%. 
+
 ---
 
 ## Dashboard:
 
 - The dashboard will be created within Tableau and will contain interactive elements base upon our machine learning model.
-- Below is a screenshot of our storyboard for our Dashbaord. Many of the charts within our dashbaord will be interactive with multiple filters that will help to refine the data along with tell a story
+- Below is a screenshot of our F1 Dashboard within Tableau. We have interactive filters within the chart along with a visulization of our Feature Importance chart from our machine learning model. 
 
-![Image of Dashboard Storyboard](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1%20Dashboard%20Storyboard.JPG)
+![Image of Dashboard Tab 1](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1_Dashboard_Races.png)
+
+![Image of Dashboard Tab 2](https://github.com/Connor-Theo/Formula_1_Sim/blob/main/Images/F1_Dashboard_Drivers.png)
 ---
 
 ## Resources:
@@ -71,3 +81,5 @@ To train the model, the data was split into two separate categories of "training
 **Datasets:** [Resources](https://github.com/Connor-Theo/Formula_1_Sim/tree/matt_branch/Resources)
 
 **Google Slides:** https://docs.google.com/presentation/d/1T1S13TpNtwNmuS0r2bkTNl7emLizUT_eB4iXwrM04CQ/edit#slide=id.p1
+
+**Tableau Dashboard:** https://prod-useast-a.online.tableau.com/t/formula1sim/views/Formula1Dashboard/RacesDashboard?:origin=card_share_link&:embed=n
