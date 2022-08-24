@@ -94,4 +94,4 @@ And we were able to answer our research questions by evaluating feature importan
 
 **Google Slides:** https://docs.google.com/presentation/d/1T1S13TpNtwNmuS0r2bkTNl7emLizUT_eB4iXwrM04CQ/edit#slide=id.p1
 
-**Tableau Dashboard:** https://prod-useast-a.online.tableau.com/t/formula1sim/views/Formula1Dashboard/RacesDashboard?:origin=card_share_link&:embed=n
+**Tableau Dashboard:** https://tabsoft.co/3AkyuV0
